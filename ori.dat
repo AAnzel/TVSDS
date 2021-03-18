@@ -24,5 +24,5 @@ number;year;name;type;usage;capacity;lifespan;addressability;mutability;accessab
 23;2010; Cell cultures;molecular;today;445000;NA;0;1;0;
 24;2014; Colloidal particle clusters;atomic;today;1;NA;0;2;0;
 25;2016;Chlorine Atomic memory; atomic; today; 1000; NA; NA; 2; 1;
-27;2010;Synthetic DNA; molecular; today; 215000000000000000; 500; 0; 0; 0;
+27;2010;Synthetic DNA; molecular; today; 16000000000; 500; 0; 0; 0;
 28;2019;Synthetic Metabolomes; molecular; today; 70000; NA; 0; 0; 0;
