@@ -1,0 +1,16 @@
+1620394906073	geckodriver	INFO	Listening on 127.0.0.1:39885
+1620394907070	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileHO215g"
+*** You are running in headless mode.
+1620394907670	Marionette	INFO	Marionette enabled
+
+(/usr/lib/firefox/firefox:38054): GLib-GObject-CRITICAL **: 15:41:48.290: g_object_set: assertion 'G_IS_OBJECT (object)' failed
+
+(/usr/lib/firefox/firefox:38070): GLib-GObject-CRITICAL **: 15:41:48.506: g_object_set: assertion 'G_IS_OBJECT (object)' failed
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1620394909640	Marionette	INFO	Listening on port 44803
+1620394909703	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(/usr/lib/firefox/firefox:38136): GLib-GObject-CRITICAL **: 15:41:49.704: g_object_set: assertion 'G_IS_OBJECT (object)' failed
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
