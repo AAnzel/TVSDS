@@ -1,8 +1,0 @@
-Used colors:
-
-	\definecolor{pink}{RGB}{205, 125, 169}
-	\definecolor{blue}{RGB}{36, 118, 182}
-	\definecolor{orange}{RGB}{230, 160, 46}
-	\definecolor{green}{RGB}{71, 159, 119}
-	\definecolor{red}{RGB}{215, 63, 71}
-	\definecolor{gray}{RGB}{188, 188, 188}
