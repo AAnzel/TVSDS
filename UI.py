@@ -94,16 +94,16 @@ def advanced_chart(data):
 def advanced_treechart():
 
     tmp_root = ['Desktop', 'Documents', 'Documents', 'Documents', 'Documents',
-                'Documents', 'Downloads', 'Games', 'miniconda3',
+                'Documents', 'Downloads', 'Games', 'Games',
                 'Music', 'Music', 'Music', 'Music', 'Music', 'Music',
                 'Pictures', 'Pictures', 'Pictures', 'Pictures', 'Pictures',
                 'Public', 'Templates', 'Video', 'Video', 'Video', 'Video']
     tmp_level_1 = [None, 'Work_stuff', 'Work_stuff', 'Conference',
-                   'Conference', 'Conference', None, None, None, 'Various',
+                   'Conference', 'Conference', None, 'New', 'Old', 'Various',
                    'Various', 'Pop', 'Rock', 'Latino', 'Latino', 'Birthday',
                    'Birthday', 'Vacation', 'Vacation', 'Vacation', None, None,
                    'Movies', 'Movies', 'Series', 'Series']
-    tmp_level_2 = [None, 1, 2, 3, 10, 5, None, None, None, 12, 1, None, 66,
+    tmp_level_2 = [None, 1, 2, 3, 10, 5, None, 4, 33, 12, 1, None, 66,
                    13, 42, 2, 145, 121, 200, 63, None, None, 121, 1, 120, 7]
 
     dummy_treemap_data = pd.DataFrame(dict(level_0=tmp_root,
@@ -115,6 +115,7 @@ def advanced_treechart():
                        values='level_2', color='level_0',
                        color_discrete_map={'Desktop': color_list[3],
                                            'Pictures': color_list[3],
+                                           'Games': color_list[3],
                                            'Music': color_list[0],
                                            'Documents': color_list[2],
                                            'Video': color_list[1],
@@ -153,12 +154,9 @@ else:
         ├── Documents
         ├── Downloads
         ├── Games
-        ├── miniconda3
         ├── Music
         ├── Pictures
-        ├── Public
-        ├── Templates
         └── Videos
 
-        12 directories, 1 file
+        7 directories
     ''')
