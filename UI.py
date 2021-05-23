@@ -4,8 +4,44 @@ import streamlit as st
 import plotly.express as px
 import altair as alt
 
+
+#  Function that changes font family globaly
+def sans_serif():
+    font = "Sans Serif"
+
+    return {
+        "config": {
+             "title": {'font': font},
+             "axis": {
+                  "labelFont": font,
+                  "titleFont": font
+             },
+             "header": {
+                  "labelFont": font,
+                  "titleFont": font
+             },
+             "legend": {
+                  "labelFont": font,
+                  "titleFont": font
+             }
+        }
+    }
+
+
+alt.themes.register('sans_serif', sans_serif)
+alt.themes.enable('sans_serif')
+
 st.set_page_config(page_title='UI proposal', layout='wide')
 color_list = ['#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', 'white']
+
+
+def calc_midpoints(y):
+    x = []
+    for i in range(len(y)):
+        prev = y[: i]
+        x.append(y[i]/2 + sum(prev))
+
+    return x
 
 
 def basic_chart(data):
@@ -13,6 +49,7 @@ def basic_chart(data):
     capacity_value = data['Capacity'][0]
     data.drop('Capacity', axis=1, inplace=True)
     data = data.reset_index().melt(id_vars=['index'])
+    data['text_pos'] = calc_midpoints(data['value'])
 
     chart = alt.Chart(data).mark_bar(
         size=70, order=False, stroke='gray', strokeWidth=1).encode(
@@ -26,17 +63,17 @@ def basic_chart(data):
     ).transform_calculate(
         perc_text=alt.datum.value*100/capacity_value + ' %',
         value_in_kb=alt.datum.value + ' KB'
-    ).properties(height=100, width=500)
+    ).properties(height=100)
 
-    text = alt.Chart(data).mark_text(color='black', dx=-30).encode(
-        alt.X('value:Q', stack='zero'),
-        alt.Text('perc_text:Q', format='.2f'),
+    text = alt.Chart(data).mark_text(color='black').encode(
+        alt.X('text_pos:Q'),
+        alt.Text('perc_text:Q', format='.1f'),
         alt.Tooltip('perc_accurate:N', title='Percentage'),
         alt.Order('variable', sort='descending')
     ).transform_calculate(
         perc_text=alt.datum.value*100/capacity_value,
         value_in_kb=alt.datum.value + ' KB',
-        perc_accurate=alt.datum.perc_text + ' %'
+        perc_accurate=alt.datum.perc_text + ' %',
     )
 
     final_chart = alt.layer(chart, text).resolve_scale(color='independent')
@@ -58,6 +95,7 @@ def advanced_chart(data):
     data.drop('Used', axis=1, inplace=True)
 
     data = data.reset_index().melt(id_vars=['index'])
+    data['text_pos'] = calc_midpoints(data['value'])
     data['index'] = data.index.to_list()
 
     chart = alt.Chart(data).mark_bar(
@@ -73,11 +111,11 @@ def advanced_chart(data):
     ).transform_calculate(
         perc_text=alt.datum.value + ' %',
         value_in_kb=alt.datum.value + ' KB'
-    ).properties(height=100, width=500)
+    ).properties(height=100)
 
-    text = alt.Chart(data).mark_text(color='black', dx=-20).encode(
-        alt.X('value:Q', stack='zero'),
-        alt.Text('perc_text:Q', format='.2f'),
+    text = alt.Chart(data).mark_text(color='black').encode(
+        alt.X('text_pos:Q'),
+        alt.Text('perc_text:Q', format='.1f'),
         alt.Tooltip('perc_accurate:N', title='Percentage'),
         alt.Order('index:O')
     ).transform_calculate(
@@ -135,17 +173,17 @@ st.markdown(' ')
 st.markdown(' ')
 
 if selected_checkbox:
-    st.altair_chart(advanced_chart(dummy_data))
+    st.altair_chart(advanced_chart(dummy_data), use_container_width=True)
     st.markdown('Lifespan: **120 years**')
-    st.markdown('Temperature: **45 C**')
+    st.markdown('Temperature: **45°C**')
     st.markdown('Mutability: **read/write**')
     st.markdown('Accessibility: **sequential**')
     st.markdown(' ')
     st.markdown('**Directory structure:**')
-    st.plotly_chart(advanced_treechart())
+    st.plotly_chart(advanced_treechart(), use_container_width=True)
 
 else:
-    st.altair_chart(basic_chart(dummy_data))
+    st.altair_chart(basic_chart(dummy_data), use_container_width=True)
     st.markdown(' ')
     st.markdown('**Directory structure:**')
     st.text('''
