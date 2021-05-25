@@ -54,7 +54,7 @@ def basic_chart(data):
     chart = alt.Chart(data).mark_bar(
         size=70, order=False, stroke='gray', strokeWidth=1).encode(
         alt.X('value:Q', axis=None, stack='zero'),
-        alt.Color('variable:N', legend=alt.Legend(title='Type'),
+        alt.Color('variable:N', legend=alt.Legend(title=''),
                   scale=alt.Scale(domain=['Used', 'Free'],
                                   range=['Gray', 'White']),
                   sort='ascending'),
@@ -65,7 +65,7 @@ def basic_chart(data):
         value_in_kb=alt.datum.value + ' KB'
     ).properties(height=100)
 
-    text = alt.Chart(data).mark_text(color='black').encode(
+    text = alt.Chart(data).mark_text(size=12, color='black').encode(
         alt.X('text_pos:Q'),
         alt.Text('perc_text:Q', format='.1f'),
         alt.Tooltip('perc_accurate:N', title='Percentage'),
@@ -76,7 +76,11 @@ def basic_chart(data):
         perc_accurate=alt.datum.perc_text + ' %',
     )
 
-    final_chart = alt.layer(chart, text).resolve_scale(color='independent')
+    final_chart = alt.layer(chart, text).resolve_scale(
+        color='independent'
+    ).configure_legend(
+        labelFontSize=12
+    )
 
     return final_chart.configure_axis(grid=False).configure_view(strokeWidth=0)
 
@@ -102,7 +106,7 @@ def advanced_chart(data):
         size=70, order=False, stroke='gray', strokeWidth=1
     ).encode(
         alt.X('value:Q', axis=None, stack='zero'),
-        alt.Color('variable:N', legend=alt.Legend(title='Type'),
+        alt.Color('variable:N', legend=alt.Legend(title=''),
                   scale=alt.Scale(domain=['Audio', 'Video', 'Documents',
                                           'Other', 'Free'],
                                   range=color_list),),
@@ -113,18 +117,22 @@ def advanced_chart(data):
         value_in_kb=alt.datum.value + ' KB'
     ).properties(height=100)
 
-    text = alt.Chart(data).mark_text(color='black').encode(
+    text = alt.Chart(data).mark_text(size=12, color='black').encode(
         alt.X('text_pos:Q'),
         alt.Text('perc_text:Q', format='.1f'),
         alt.Tooltip('perc_accurate:N', title='Percentage'),
-        alt.Order('index:O')
+        alt.Order('index:O'),
     ).transform_calculate(
         perc_text=alt.datum.value*100/capacity_value,
         value_in_kb=alt.datum.value + ' KB',
         perc_accurate=alt.datum.perc_text + ' %'
     )
 
-    final_chart = alt.layer(chart, text).resolve_scale(color='independent')
+    final_chart = alt.layer(chart, text).resolve_scale(
+        color='independent'
+    ).configure_legend(
+        labelFontSize=12
+    )
 
     return final_chart.configure_axis(grid=False).configure_view(strokeWidth=0)
 
@@ -158,6 +166,11 @@ def advanced_treechart():
                                            'Documents': color_list[2],
                                            'Video': color_list[1],
                                            '(?)': color_list[-1]})
+
+    chart.update_layout(
+        font_family='Sans Serif',
+        title_font_family='Sans Serif'
+    )
 
     return chart
 
