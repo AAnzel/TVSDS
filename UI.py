@@ -175,6 +175,34 @@ def advanced_treechart():
     return chart
 
 
+def advanced_lifespan_chart():
+
+    tmp_lifespan_series = pd.Series(range(0, 310, 10), name='Lifespan')
+    tmp_estimate = pd.Series([1200], name='Estimate')
+    tmp_lifespan_data = pd.DataFrame(tmp_lifespan_series)
+    tmp_estimate_data = pd.DataFrame(tmp_estimate)
+
+    chart = alt.Chart(tmp_lifespan_data).mark_bar().encode(
+        alt.X('Lifespan:Q', axis=alt.Axis(tickCount=10, title=None,
+              offset=-20, grid=False),
+              stack='zero'),
+        alt.Color('Lifespan:Q', scale=alt.Scale(scheme='greys', reverse=True),
+                  legend=None)
+    )
+
+    rule = alt.Chart(tmp_estimate_data).mark_rule(
+        color='black', size=5, opacity=0.4
+    ).encode(
+        alt.X('Estimate:Q')
+    )
+
+    result = (chart + rule).properties(
+        height=100
+    ).configure_axis(grid=False).configure_view(strokeWidth=0)
+
+    return result
+
+
 dummy_data = pd.DataFrame({'Capacity': 1271234, 'Used': 801234}, index=[0])
 dummy_data['Free'] = dummy_data['Capacity'] - dummy_data['Used']
 
@@ -187,7 +215,11 @@ st.markdown(' ')
 
 if selected_checkbox:
     st.altair_chart(advanced_chart(dummy_data), use_container_width=True)
-    st.markdown('Lifespan: **120 years**')
+    adv_col_1, adv_col_2 = st.beta_columns([1, 2.5])
+    adv_col_1.markdown(' ')
+    adv_col_1.markdown(' ')
+    adv_col_1.markdown('Lifespan: **1200 months**')
+    adv_col_2.altair_chart(advanced_lifespan_chart(), use_container_width=True)
     st.markdown('Temperature: **45°C**')
     st.markdown('Mutability: **read/write**')
     st.markdown('Accessibility: **sequential**')
