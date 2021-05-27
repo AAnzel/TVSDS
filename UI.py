@@ -68,7 +68,8 @@ def basic_chart(data):
     text = alt.Chart(data).mark_text(size=12, color='black').encode(
         alt.X('text_pos:Q'),
         alt.Text('perc_text:Q', format='.1f'),
-        alt.Tooltip('perc_accurate:N', title='Percentage'),
+        alt.Tooltip('value_in_kb:N', title='Size'),
+        # alt.Tooltip('perc_accurate:N', title='Percentage'),
         alt.Order('variable', sort='descending')
     ).transform_calculate(
         perc_text=alt.datum.value*100/capacity_value,
@@ -120,7 +121,8 @@ def advanced_chart(data):
     text = alt.Chart(data).mark_text(size=12, color='black').encode(
         alt.X('text_pos:Q'),
         alt.Text('perc_text:Q', format='.1f'),
-        alt.Tooltip('perc_accurate:N', title='Percentage'),
+        alt.Tooltip('value_in_kb:N', title='Size'),
+        # alt.Tooltip('perc_accurate:N', title='Percentage'),
         alt.Order('index:O'),
     ).transform_calculate(
         perc_text=alt.datum.value*100/capacity_value,
