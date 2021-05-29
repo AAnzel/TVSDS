@@ -4,6 +4,9 @@ import streamlit as st
 import plotly.express as px
 import altair as alt
 
+SEED = 42
+np.random.seed(SEED)
+
 
 #  Function that changes font family globaly
 def sans_serif():
@@ -179,30 +182,29 @@ def advanced_treechart():
 
 def advanced_lifespan_chart():
 
-    tmp_lifespan_series = pd.Series(range(0, 310, 10), name='Lifespan')
-    tmp_estimate = pd.Series([1200], name='Estimate')
+    tmp_lifespan_series = pd.Series(np.random.randint(28, 56, 1000),
+                                    name='Lifespan')
+    tmp_estimate = pd.Series([42], name='Estimate')
     tmp_lifespan_data = pd.DataFrame(tmp_lifespan_series)
     tmp_estimate_data = pd.DataFrame(tmp_estimate)
 
-    chart = alt.Chart(tmp_lifespan_data).mark_bar().encode(
-        alt.X('Lifespan:Q', axis=alt.Axis(tickCount=10, title=None,
-              offset=-20, grid=False),
-              stack='zero'),
-        alt.Color('Lifespan:Q', scale=alt.Scale(scheme='greys', reverse=True),
-                  legend=None)
-    )
-
-    rule = alt.Chart(tmp_estimate_data).mark_rule(
-        color='black', size=5, opacity=0.4
+    chart_1 = alt.Chart(tmp_lifespan_data).mark_boxplot(
+        size=50, color='gray', opacity=0.7
     ).encode(
-        alt.X('Estimate:Q')
+        alt.X('Lifespan:Q', axis=alt.Axis(title=None, grid=False),
+              scale=alt.Scale(domain=[0, 100])),
+    ).properties(height=100)
+
+    chart_2 = alt.Chart(tmp_estimate_data).mark_rule(
+        size=4, color='black', opacity=0.6
+    ).encode(
+        alt.X('Estimate:Q', axis=alt.Axis(title=None, grid=False),
+              scale=alt.Scale(domain=[0, 100]))
     )
 
-    result = (chart + rule).properties(
-        height=100
-    ).configure_axis(grid=False).configure_view(strokeWidth=0)
+    chart = chart_1 + chart_2
 
-    return result
+    return chart.configure_axis(grid=False).configure_view(strokeWidth=0)
 
 
 dummy_data = pd.DataFrame({'Capacity': 1271234, 'Used': 801234}, index=[0])
@@ -220,7 +222,7 @@ if selected_checkbox:
     adv_col_1, adv_col_2 = st.beta_columns([1, 2.5])
     adv_col_1.markdown(' ')
     adv_col_1.markdown(' ')
-    adv_col_1.markdown('Lifespan: **1200 months**')
+    adv_col_1.markdown('Lifespan: **42 years**')
     adv_col_2.altair_chart(advanced_lifespan_chart(), use_container_width=True)
     st.markdown('Temperature: **45°C**')
     st.markdown('Mutability: **read/write**')
