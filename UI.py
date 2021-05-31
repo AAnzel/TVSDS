@@ -220,12 +220,12 @@ st.markdown(' ')
 
 if selected_checkbox:
     st.altair_chart(advanced_chart(dummy_data), use_container_width=True)
-    st.markdown('Accessibility: **sequential**')
     adv_col_1, adv_col_2 = st.beta_columns([1, 2.5])
     adv_col_1.markdown(' ')
     adv_col_1.markdown(' ')
     adv_col_1.markdown('Lifespan: **42 years**')
     adv_col_2.altair_chart(advanced_lifespan_chart(), use_container_width=True)
+    st.markdown('Accessibility: **sequential**')
     st.markdown('Temperature: **45°C**')
     st.markdown('Mutability: **read/write**')
     st.markdown(' ')
