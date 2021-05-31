@@ -189,7 +189,8 @@ def advanced_lifespan_chart():
     tmp_estimate_data = pd.DataFrame(tmp_estimate)
 
     chart_1 = alt.Chart(tmp_lifespan_data).mark_boxplot(
-        size=50, color='gray', opacity=0.7
+        size=50, color='gray', opacity=0.7,
+        rule=alt.MarkConfig(size=6, opacity=0.5)
     ).encode(
         alt.X('Lifespan:Q', axis=alt.Axis(title=None, grid=False),
               scale=alt.Scale(domain=[0, 100])),
@@ -219,6 +220,7 @@ st.markdown(' ')
 
 if selected_checkbox:
     st.altair_chart(advanced_chart(dummy_data), use_container_width=True)
+    st.markdown('Accessibility: **sequential**')
     adv_col_1, adv_col_2 = st.beta_columns([1, 2.5])
     adv_col_1.markdown(' ')
     adv_col_1.markdown(' ')
@@ -226,13 +228,13 @@ if selected_checkbox:
     adv_col_2.altair_chart(advanced_lifespan_chart(), use_container_width=True)
     st.markdown('Temperature: **45°C**')
     st.markdown('Mutability: **read/write**')
-    st.markdown('Accessibility: **sequential**')
     st.markdown(' ')
     st.markdown('**Directory structure:**')
     st.plotly_chart(advanced_treechart(), use_container_width=True)
 
 else:
     st.altair_chart(basic_chart(dummy_data), use_container_width=True)
+    st.markdown('Accessibility: **sequential**')
     st.markdown(' ')
     st.markdown('**Directory structure:**')
     st.text('''
