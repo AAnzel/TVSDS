@@ -1,5 +1,4 @@
 .ipynb_checkpoints/
 *.html
-Survey_data/
-Survey*
 *.log
+*.backup
