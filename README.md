@@ -31,17 +31,17 @@ The code is written in Python 3.8.10 and tested on Linux with the following libr
 
 
 ## Data
-* The data gathered from the review is in file [ori.dat](./ori.dat)
-* The data gathered from the survey is in [Survey_data](./Survey_data) directory
+* The data gathered from the review is in file [ori.dat](./Data/ori.dat)
+* The data gathered from the survey is in [Survey_data](./Data/Survey_data) directory
 
 
 ## Code
-* [Figures.ipynb](./Figures.ipynb) contains the code needed to replicate all of the figures present in the paper, except for the UI figures. This notebook also contains a section to explore the survey data and format it for the paper.
-* [UI.py](./UI.py) contains the code that creates the UI proposed in the paper.
+* [Figures.ipynb](./Source/Figures.ipynb) contains the code needed to replicate all of the figures present in the paper, except for the UI figures. This notebook also contains a section to explore the survey data and format it for the paper.
+* [UI.py](./Source/UI.py) contains the code that creates the UI proposed in the paper.
 
 ## Running
-* [Figures.ipynb](./Figures.ipynb): For the best experience, open with Jupyter Lab.
-* [UI.py](./UI.py): `streamlit run UI.py`
+* [Figures.ipynb](./Source/Figures.ipynb): For the best experience, open with Jupyter Lab.
+* [UI.py](./Source/UI.py): `streamlit run UI.py`
 
 ## License
 
