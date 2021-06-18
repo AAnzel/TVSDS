@@ -97,7 +97,7 @@ def advanced_chart(data):
     data['Audio'] = np.round(data['Used'] * 0.25, 2)
     data['Video'] = np.round(data['Used'] * 0.4, 2)
     data['Documents'] = np.round(data['Used'] * 0.2, 2)
-    data['Other'] = np.round(data['Used'] - data['Audio'] - dummy_data['Video']
+    data['Other'] = np.round(data['Used'] - data['Audio'] - data['Video']
                              - data['Documents'], 2)
     data['Free'] = pd.Series([free_value])
     data.drop('Used', axis=1, inplace=True)
@@ -208,44 +208,50 @@ def advanced_lifespan_chart():
     return chart.configure_axis(grid=False).configure_view(strokeWidth=0)
 
 
-dummy_data = pd.DataFrame({'Capacity': 1271234, 'Used': 801234}, index=[0])
-dummy_data['Free'] = dummy_data['Capacity'] - dummy_data['Used']
+def main():
+    dummy_data = pd.DataFrame({'Capacity': 1271234, 'Used': 801234}, index=[0])
+    dummy_data['Free'] = dummy_data['Capacity'] - dummy_data['Used']
 
-st.title('UI proposal')
-st.markdown('---')
+    st.title('UI proposal')
+    st.markdown('---')
 
-selected_checkbox = st.checkbox('Advanced view')
-st.markdown(' ')
-st.markdown(' ')
-
-if selected_checkbox:
-    st.altair_chart(advanced_chart(dummy_data), use_container_width=True)
-    adv_col_1, adv_col_2 = st.beta_columns([1, 2.5])
-    adv_col_1.markdown(' ')
-    adv_col_1.markdown(' ')
-    adv_col_1.markdown('Lifespan: **42 years**')
-    adv_col_2.altair_chart(advanced_lifespan_chart(), use_container_width=True)
-    st.markdown('Accessibility: **sequential**')
-    st.markdown('Temperature: **45°C**')
-    st.markdown('Mutability: **read/write**')
+    selected_checkbox = st.checkbox('Advanced view')
     st.markdown(' ')
-    st.markdown('**Directory structure:**')
-    st.plotly_chart(advanced_treechart(), use_container_width=True)
-
-else:
-    st.altair_chart(basic_chart(dummy_data), use_container_width=True)
-    st.markdown('Accessibility: **sequential**')
     st.markdown(' ')
-    st.markdown('**Directory structure:**')
-    st.text('''
-    /home/user
-        ├── Desktop
-        ├── Documents
-        ├── Downloads
-        ├── Games
-        ├── Music
-        ├── Pictures
-        └── Videos
 
-        7 directories
-    ''')
+    if selected_checkbox:
+        st.altair_chart(advanced_chart(dummy_data), use_container_width=True)
+        adv_col_1, adv_col_2 = st.beta_columns([1, 2.5])
+        adv_col_1.markdown(' ')
+        adv_col_1.markdown(' ')
+        adv_col_1.markdown('Lifespan: **42 years**')
+        adv_col_2.altair_chart(advanced_lifespan_chart(),
+                               use_container_width=True)
+        st.markdown('Accessibility: **sequential**')
+        st.markdown('Temperature: **45°C**')
+        st.markdown('Mutability: **read/write**')
+        st.markdown(' ')
+        st.markdown('**Directory structure:**')
+        st.plotly_chart(advanced_treechart(), use_container_width=True)
+
+    else:
+        st.altair_chart(basic_chart(dummy_data), use_container_width=True)
+        st.markdown('Accessibility: **sequential**')
+        st.markdown(' ')
+        st.markdown('**Directory structure:**')
+        st.text('''
+        /home/user
+            ├── Desktop
+            ├── Documents
+            ├── Downloads
+            ├── Games
+            ├── Music
+            ├── Pictures
+            └── Videos
+
+            7 directories
+        ''')
+
+
+if __name__ == "__main__":
+    main()
