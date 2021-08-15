@@ -41,7 +41,7 @@ The code is written in Python 3.8.10 and tested on Linux with the following libr
 
 ## Running
 * [Figures.ipynb](./Source/Figures.ipynb): For the best experience, open with Jupyter Lab.
-* [UI.py](./Source/UI.py): `streamlit run UI.py`
+* [UI.py](./Source/UI.py): `streamlit run UI.py --browser.gatherUsageStats False`
 
 ## License
 
