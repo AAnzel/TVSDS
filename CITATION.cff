@@ -19,14 +19,14 @@ preferred-citation:
   type: article
   authors:
   - family-names: "Anžel"
-	given-names: "Aleksandar"
-	orcid: "https://orcid.org/0000-0002-0678-2870"
+    given-names: "Aleksandar"
+    orcid: "https://orcid.org/0000-0002-0678-2870"
   - family-names: "Heider"
-	given-names: "Dominik"
-	orcid: "https://orcid.org/0000-0002-3108-8311"
+    given-names: "Dominik"
+    orcid: "https://orcid.org/0000-0002-3108-8311"
   - family-names: "Hattab"
-	given-names: "Georges"
-	orcid: "https://orcid.org/0000-0003-4168-8254"
+    given-names: "Georges"
+    orcid: "https://orcid.org/0000-0003-4168-8254"
   doi: "10.0000/00000"
   journal: "Computational and Structural Biotechnology Journal"
   month: 9
