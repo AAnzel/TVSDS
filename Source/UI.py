@@ -4,6 +4,17 @@ import streamlit as st
 import plotly.express as px
 import altair as alt
 
+
+__author__ = 'Aleksandar Anžel'
+__copyright__ = ''
+__credits__ = ['Aleksandar Anžel', 'Georges Hattab']
+__license__ = 'GNU General Public License v3.0'
+__version__ = '1.0'
+__maintainer__ = 'Aleksandar Anžel'
+__email__ = 'aleksandar.anzel@uni-marburg.de'
+__status__ = 'Dev'
+
+
 SEED = 42
 np.random.seed(SEED)
 
