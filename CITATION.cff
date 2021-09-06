@@ -12,9 +12,9 @@ authors:
   orcid: "https://orcid.org/0000-0003-4168-8254"
 title: "TVSDS"
 version: 1.0.0
-doi: 10.5281/zenodo.1234
-date-released: 2021-08-25
-url: "https://github.com/AAnzel/TVSDS"
+doi: "10.1016/j.csbj.2021.08.031"
+date-released: 2021-09-06
+url: "https://www.sciencedirect.com/science/article/pii/S2001037021003627"
 preferred-citation:
   type: article
   authors:
@@ -27,12 +27,12 @@ preferred-citation:
   - family-names: "Hattab"
     given-names: "Georges"
     orcid: "https://orcid.org/0000-0003-4168-8254"
-  doi: "10.0000/00000"
+  doi: "10.1016/j.csbj.2021.08.031"
   journal: "Computational and Structural Biotechnology Journal"
   month: 9
-  start: 1 # First page number
-  end: 10 # Last page number
+  start: 4904 # First page number
+  end: 4918 # Last page number
   title: "The Visual Story of Data Storage: From Storage Properties to User Interfaces"
-  issue: 1
-  volume: 1
+  issue: 19C
+  volume: 19C
   year: 2021
