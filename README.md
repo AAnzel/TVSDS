@@ -26,7 +26,7 @@ Abstract:
 
 > About fifty times more data has been created than there are stars in the observable universe. Current trends in data creation and consumption mean that the devices and storage media we use will require more physical space. Novel data storage media such as DNA are considered a viable alternative. Yet, the introduction of new storage technologies should be accompanied by an evaluation of user requirements. To assess such needs, we designed and conducted a survey to rank different storage properties adapted for visualization. That is, accessibility, capacity, usage, mutability, lifespan, addressability, and typology. Withal, we reported different storage devices over time while ranking them by their properties. Our results indicated a timeline of three distinct periods: magnetic, optical and electronic, and alternative media. Moreover, by investigating user interfaces across different operating systems, we observed a predominant presence of bar charts and tree maps for the usage of a medium and its file directory hierarchy, respectively. Taken together with the results of our survey, this allowed us to create a customized user interface that includes data visualizations that can be toggled for both user groups: Experts and Public.
 
-![A figure from the paper](./Output/Usage_name.svg)
+![A figure from the paper](./Output/Usage_name.png)
 
 
 
